@@ -9,6 +9,15 @@ os.makedirs("output", exist_ok=True)
 # Now import after directory creation
 from keep_alive import keep_alive, run_scraper
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("logs/main.log")
+    ]
+)
+
 logging.info("Starting IT Internship Scraper Service")
 
 # Start the web server to keep the Repl alive
