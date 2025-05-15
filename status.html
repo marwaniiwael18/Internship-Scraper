@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IT Internship Scraper - Status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .status {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #2ecc71;
+            margin-right: 10px;
+        }
+        .info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>IT Internship Scraper Status</h1>
+        
+        <div class="status">
+            <div class="status-indicator"></div>
+            <div>Service is running</div>
+        </div>
+        
+        <div class="info">
+            <p><strong>Last check:</strong> <span id="current-time"></span></p>
+            <p><strong>Service uptimes:</strong> <span id="uptime-counter"></span></p>
+        </div>
+        
+        <h2>Service Information</h2>
+        <ul class="feature-list">
+            <li>✅ Scraping LinkedIn for IT internships</li>
+            <li>✅ Filtering for internships posted in the last 3 days</li>
+            <li>✅ Sending results to Telegram channel</li>
+            <li>✅ Automated runs every 8 hours</li>
+            <li>✅ Strict IT/Engineering position detection</li>
+        </ul>
+        
+        <footer>
+            IT Internship Scraper - Running on Replit
+        </footer>
+    </div>
+    
+    <script>
+        // Update the current time
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').textContent = now.toLocaleString();
+        }
+        
+        // Update uptime counter
+        function updateUptime() {
+            const startTime = new Date();
+            
+            setInterval(() => {
+                const now = new Date();
+                const diff = now - startTime;
+                
+                const hours = Math.floor(diff / 3600000);
+                const mins = Math.floor((diff % 3600000) / 60000);
+                const secs = Math.floor((diff % 60000) / 1000);
+                
+                document.getElementById('uptime-counter').textContent = 
+                    `${hours}h ${mins}m ${secs}s`;
+            }, 1000);
+        }
+        
+        // Initial calls
+        updateTime();
+        updateUptime();
+        
+        // Update time every second
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

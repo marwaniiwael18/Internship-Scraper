@@ -91,6 +91,11 @@ The script is pre-configured with your Telegram details:
 - Bot Token: 8041545402:AAFvZBdheN74kl6_juAfPPJ-wVNCSi7Yq6k
 - Chat ID: -1002680765834
 
+## 24/7 Deployment Options
+
+### Replit (Free)
+This project can be deployed on Replit to run 24/7 for free. See [REPLIT_DEPLOYMENT.md](REPLIT_DEPLOYMENT.md) for detailed instructions.
+
 ## Automation
 
 To automatically run the scraper daily, add this to your crontab:

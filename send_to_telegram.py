@@ -15,12 +15,12 @@ from pathlib import Path
 from typing import List, Dict, Any
 
 # Configuration
-BOT_TOKEN = "8041545402:AAFvZBdheN74kl6_juAfPPJ-wVNCSi7Yq6k"
-CHAT_ID = "-1002680765834"
-MAX_ENTRIES = 20
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8041545402:AAFvZBdheN74kl6_juAfPPJ-wVNCSi7Yq6k")
+CHAT_ID = os.environ.get("CHAT_ID", "-1002680765834")
+MAX_ENTRIES = int(os.environ.get("MAX_ENTRIES", "20"))
 
 # Project paths
-PROJECT_ROOT = Path("/Users/macbook/Desktop/internship-scraper")
+PROJECT_ROOT = Path(os.environ.get("PROJECT_ROOT", os.path.dirname(os.path.abspath(__file__))))
 OUTPUT_DIR = PROJECT_ROOT / "output"
 FILTERED_RESULTS_FILE = OUTPUT_DIR / "it_internships.csv"
 

@@ -30,11 +30,11 @@ except ImportError:
     print("Warning: jobpilot module not available. Scraping functionality will be disabled.")
 
 # === CONFIGURATION ===
-BOT_TOKEN = "8041545402:AAFvZBdheN74kl6_juAfPPJ-wVNCSi7Yq6k"
-CHAT_ID = "-1002680765834"
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "8041545402:AAFvZBdheN74kl6_juAfPPJ-wVNCSi7Yq6k")
+CHAT_ID = os.environ.get("CHAT_ID", "-1002680765834")
 
 # Project paths
-PROJECT_ROOT = Path(__file__).parent
+PROJECT_ROOT = Path(os.environ.get("PROJECT_ROOT", os.path.dirname(os.path.abspath(__file__))))
 OUTPUT_DIR = PROJECT_ROOT / "output"
 RESULTS_FILE = OUTPUT_DIR / "it_results.csv"
 FILTERED_RESULTS_FILE = OUTPUT_DIR / "it_internships.csv"
