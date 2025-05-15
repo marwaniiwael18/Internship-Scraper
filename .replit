@@ -1,5 +1,5 @@
-run = "python3 main.py"
-entrypoint = "main.py"
+run = "python3 first_run.py"
+entrypoint = "first_run.py"
 language = "python3"
 hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
 

@@ -90,7 +90,16 @@ python it_internship.py --send --max_entries 15
 ## 24/7 Deployment Options
 
 ### Replit (Free)
-This project can be deployed on Replit to run 24/7 for free. See [REPLIT_DEPLOYMENT.md](REPLIT_DEPLOYMENT.md) for detailed instructions.
+This project can be deployed on Replit to run 24/7 for free with no credit card required. The setup includes:
+
+- **Web Dashboard**: Visual status monitoring of your scraper
+- **Automatic Scheduling**: Runs every 8 hours without manual intervention
+- **UptimeRobot Integration**: Keeps your Replit project running 24/7
+- **Environment Variables**: Securely stores your Telegram credentials
+
+For step-by-step setup instructions:
+- Quick overview: [REPLIT_DEPLOYMENT.md](REPLIT_DEPLOYMENT.md)
+- Detailed guide: [REPLIT_SETUP_GUIDE.md](REPLIT_SETUP_GUIDE.md)
 
 ## Automation
 
