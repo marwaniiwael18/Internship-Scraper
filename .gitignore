@@ -5,6 +5,10 @@ __pycache__
 .idea
 .vscode
 
+# Generated data files
+output/*.csv
+logs/
+
 *.log
 *.zip
 *.pdf
