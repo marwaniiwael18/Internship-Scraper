@@ -94,9 +94,14 @@ def run_scraper():
                 subprocess.run(["python", "it_internship.py", "--scrape", "--days=3"], 
                               check=True)
                 
-                # Run the Telegram sender
-                logging.info("Sending results to Telegram...")
-                subprocess.run(["python", "send_to_telegram.py"], 
+                # Delete existing filtered results to ensure fresh data
+                if os.path.exists('output/it_internships.csv'):
+                    os.remove('output/it_internships.csv')
+                    logging.info("Removed existing filtered results to ensure fresh data")
+                
+                # Run filter and send to Telegram
+                logging.info("Filtering for recent internships and sending to Telegram...")
+                subprocess.run(["python", "it_internship.py", "--send", "--days=3"], 
                               check=True)
                 
                 # Update status

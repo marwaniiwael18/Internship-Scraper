@@ -341,9 +341,8 @@ def filter_recent_internships(internships: List[Dict[str, str]], days: int = 4) 
             # Get the date from the internship data
             date_str = internship.get('date', '')
             
-            # If no date field, include it (should not happen at this point)
+            # If no date field, don't include it (we want to be strict)
             if not date_str:
-                recent_internships.append(internship)
                 continue
                 
             # Try to parse the date
@@ -354,14 +353,13 @@ def filter_recent_internships(internships: List[Dict[str, str]], days: int = 4) 
                 try:
                     post_date = datetime.datetime.strptime(date_str, '%d %b %Y').date()
                 except ValueError:
-                    # If we can't parse the date, include it
-                    recent_internships.append(internship)
+                    # If we can't parse the date, don't include it (we want to be strict)
                     continue
             
             # Calculate days difference
             days_old = (today - post_date).days
             
-            # Keep only recent posts
+            # Keep only recent posts with correct dates
             if days == 0:  # Today only
                 if days_old == 0:
                     recent_internships.append(internship)
@@ -370,9 +368,8 @@ def filter_recent_internships(internships: List[Dict[str, str]], days: int = 4) 
                     recent_internships.append(internship)
                 
         except Exception as e:
-            # If there's any error processing the date, include it anyway
+            # If there's any error processing the date, don't include it (we want to be strict)
             print(f"Error processing date: {e}")
-            recent_internships.append(internship)
     
     print(f"Filtered to {len(recent_internships)} internships from the last {days} days")
     return recent_internships
