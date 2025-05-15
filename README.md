@@ -1,3 +1,9 @@
+
+![Screenshot 2025-05-15 at 21 57 07](https://github.com/user-attachments/assets/a9481baa-dd54-4e2d-890c-90f05bb365e1)
+
+
+
+
 # IT Engineering Internship Scraper
 
 A powerful tool for finding IT engineering internships and alternances across Europe and sending them directly to your Telegram channel.
