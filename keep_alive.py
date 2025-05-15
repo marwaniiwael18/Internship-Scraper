@@ -59,6 +59,7 @@ def home():
         html_content = html_content.replace('{{UPTIME}}', uptime_str)
         html_content = html_content.replace('{{NEXT_RUN}}', (now + datetime.timedelta(seconds=next_run_seconds)).strftime("%Y-%m-%d %H:%M:%S"))
         html_content = html_content.replace('{{JOB_COUNT}}', str(job_count))
+        html_content = html_content.replace('{{RUN_COUNT}}', str(run_count))
         html_content = html_content.replace('{{STATUS}}', "Running")
         
         return html_content
