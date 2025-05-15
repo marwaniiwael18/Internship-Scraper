@@ -29,6 +29,31 @@ This guide will help you deploy and run your IT Internship Scraper on Replit, wh
 2. Click "Add New Monitor"
 3. Select "HTTP(s)" as the monitor type
 4. Enter a friendly name like "IT Internship Scraper"
+5. For the URL, enter your Replit app URL (will look like `https://internship-scraper.yourusername.repl.co`)
+6. Set the monitoring interval to 5 minutes (300 seconds)
+7. Click "Create Monitor"
+
+With UptimeRobot configured, your Replit scraper will stay alive 24/7 and continue checking for new internships every 8 hours without going to sleep.
+
+## Checking Your Scraper's Status
+
+1. Visit your Replit app URL to see the live status dashboard
+2. The dashboard will show:
+   - Current scraper status
+   - Time until next run
+   - Number of internships found
+   - Service uptime
+   - Total number of scraping runs
+
+## Troubleshooting
+
+If you encounter any issues:
+
+1. Check the Replit console for error messages
+2. Make sure your Telegram BOT_TOKEN and CHAT_ID are correctly set in the Secrets panel
+3. Verify that UptimeRobot is successfully connecting to your application
+
+For persistent issues, you can restart your Repl by clicking the "Stop" button and then "Run" again.
 5. For the URL, use the URL of your Repl. It will look something like:
    `https://internship-scraper.yourusername.repl.co`
    (You can find this URL in the Replit interface after running your application)

@@ -67,12 +67,15 @@
         
         <div class="status">
             <div class="status-indicator"></div>
-            <div>Service is running</div>
+            <div>Status: {{STATUS}}</div>
         </div>
         
         <div class="info">
-            <p><strong>Last check:</strong> <span id="current-time"></span></p>
-            <p><strong>Service uptimes:</strong> <span id="uptime-counter"></span></p>
+            <p><strong>Last check:</strong> {{CURRENT_TIME}}</p>
+            <p><strong>Service uptime:</strong> {{UPTIME}}</p>
+            <p><strong>Next scheduled run:</strong> {{NEXT_RUN}}</p>
+            <p><strong>Jobs found:</strong> {{JOB_COUNT}} IT internship positions</p>
+            <p><strong>Total runs:</strong> {{RUN_COUNT}}</p>
         </div>
         
         <h2>Service Information</h2>

@@ -16,13 +16,47 @@ logging.basicConfig(
     ]
 )
 
+# Global variables for tracking status
+start_time = time.time()
+next_run_seconds = 28800  # 8 hours in seconds
+last_run_time = datetime.datetime.now() - datetime.timedelta(hours=9) 
+run_count = 0
+scraper_status = "Initializing"
+
 app = Flask('')
 
 @app.route('/')
 def home():
     try:
         with open('status.html', 'r') as file:
-            html_content = file.read()
+            html_template = file.read()
+            
+        # Get stats for dynamic insertion
+        now = datetime.datetime.now()
+        uptime = time.time() - start_time
+        days, remainder = divmod(uptime, 86400)
+        hours, remainder = divmod(remainder, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        
+        # Get job counts if available
+        job_count = 0
+        try:
+            if os.path.exists('output/it_internships.csv'):
+                with open('output/it_internships.csv', 'r') as f:
+                    job_count = sum(1 for _ in f) - 1  # Subtract header
+        except:
+            pass
+            
+        # Format uptime string
+        uptime_str = f"{int(days)}d {int(hours)}h {int(minutes)}m {int(seconds)}s"
+        
+        # Replace placeholders in the HTML
+        html_content = html_template.replace('{{CURRENT_TIME}}', now.strftime("%Y-%m-%d %H:%M:%S"))
+        html_content = html_content.replace('{{UPTIME}}', uptime_str)
+        html_content = html_content.replace('{{NEXT_RUN}}', (now + datetime.timedelta(seconds=next_run_seconds)).strftime("%Y-%m-%d %H:%M:%S"))
+        html_content = html_content.replace('{{JOB_COUNT}}', str(job_count))
+        html_content = html_content.replace('{{STATUS}}', "Running")
+        
         return html_content
     except Exception as e:
         logging.error(f"Error reading status page: {e}")
@@ -41,8 +75,7 @@ def run_scraper():
     os.makedirs("output", exist_ok=True)
     os.makedirs("logs", exist_ok=True)
     
-    # Track when we last ran the scraper
-    last_run_time = datetime.datetime.now() - datetime.timedelta(hours=9)
+    global last_run_time, run_count, scraper_status
     
     while True:
         try:
@@ -51,6 +84,7 @@ def run_scraper():
             
             # Run every 8 hours
             if time_since_last_run.total_seconds() >= 28800:  # 8 hours in seconds
+                scraper_status = "Running scraper..."
                 logging.info("Starting scheduled scraping run")
                 
                 # Run the scraper with 3-day filter
@@ -63,8 +97,10 @@ def run_scraper():
                 subprocess.run(["python", "send_to_telegram.py"], 
                               check=True)
                 
-                # Update the last run time
+                # Update status
+                run_count += 1
                 last_run_time = now
+                scraper_status = "Idle"
                 logging.info(f"Scraping completed successfully at {now.strftime('%Y-%m-%d %H:%M:%S')}")
                 logging.info(f"Next run scheduled for: {(now + datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')}")
             

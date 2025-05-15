@@ -85,11 +85,7 @@ python it_internship.py --all
 python it_internship.py --send --max_entries 15
 ```
 
-## Telegram Configuration
 
-The script is pre-configured with your Telegram details:
-- Bot Token: 8041545402:AAFvZBdheN74kl6_juAfPPJ-wVNCSi7Yq6k
-- Chat ID: -1002680765834
 
 ## 24/7 Deployment Options
 
