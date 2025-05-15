@@ -1,5 +1,5 @@
-run = "python3 first_run.py"
-entrypoint = "first_run.py"
+run = "bash start.sh"
+entrypoint = "main.py"
 language = "python3"
 hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
 

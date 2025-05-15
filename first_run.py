@@ -11,12 +11,17 @@ import sys
 import time
 import logging
 
+# Create necessary directories before setting up logging
+os.makedirs("logs", exist_ok=True)
+os.makedirs("output", exist_ok=True)
+
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
         logging.StreamHandler(),
+        logging.FileHandler("logs/setup.log")
     ]
 )
 

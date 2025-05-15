@@ -6,6 +6,10 @@ import subprocess
 import os
 import logging
 
+# Create necessary directories before setting up logging
+os.makedirs("logs", exist_ok=True)
+os.makedirs("output", exist_ok=True)
+
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,
@@ -71,10 +75,7 @@ def keep_alive():
     logging.info("Web server started")
 
 def run_scraper():
-    # Create necessary directories
-    os.makedirs("output", exist_ok=True)
-    os.makedirs("logs", exist_ok=True)
-    
+    # Directories are already created at module initialization
     global last_run_time, run_count, scraper_status
     
     while True:

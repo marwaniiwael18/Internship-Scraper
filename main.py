@@ -1,12 +1,13 @@
 import threading
 import logging
-from keep_alive import keep_alive, run_scraper
+import os
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+# Create necessary directories before importing keep_alive
+os.makedirs("logs", exist_ok=True)
+os.makedirs("output", exist_ok=True)
+
+# Now import after directory creation
+from keep_alive import keep_alive, run_scraper
 
 logging.info("Starting IT Internship Scraper Service")
 
